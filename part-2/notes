@@ -1,0 +1,54 @@
+Manipulating Containers with Docker Client
+
+	Overriding Default Commands
+		- "docker run busybox echo hi there"
+		- "docker run busybox ls"
+			- prints directory of the container
+
+	List all previous ran containers:
+		- " docker --all "
+
+	docker run = docker create + docker start
+		- " docker create hello-world "
+		- " docker start -a <hash> "
+			- 'a' flag watches out for output from the container 
+
+
+	Restarting stopped containers
+		- " docker start -a <hash> "
+
+	Removing Stopped Containers
+		- " docker system prune "
+
+
+	Retrieving Log Outputs
+		- "docker logs <container id>"
+			- prints out all logs that are emitted from the container
+
+	Stopping Containers
+		- "docker stop <container>" ***recommended
+			-SIGTERM
+			-Cleans up while shutting down
+		- " docker kill "
+			- SIGKILL
+			- shut down right now
+
+
+	Multi-Command Containers
+	 -Executing Commands in Running Containers
+	 	- " docker exec -it <container id> <command> "
+	 		- '-it' allows us to provide input to the container *****
+
+	-"-it" flag ****
+
+
+	Getting a Command Prompt in a Container
+		- instead of always running docker exec
+		- " docker exec -it <container id> sh "
+			- gets a shell
+
+			-'sh' is a command processor. Like bash
+
+
+	Start with a shell
+		- " docker run -it busybox sh "

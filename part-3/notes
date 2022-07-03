@@ -1,0 +1,13 @@
+Building Custom Images
+	-Process
+		-Dockerfile -> Docker Client -> Docker Server -> Usable Image
+
+	- Creating a Dockerfile
+		- Specify base image
+		- Run some commands to install dependencies
+		- Specify a command to run up container startup
+
+
+	Goal:
+		- Create an image that runs redis-server
+		- FROM, RUN, CMD are instructions for docker

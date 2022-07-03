@@ -1,0 +1,20 @@
+Why docker?
+	- Docker makes it really easy to install and run software without worrying about setup or dependencies
+
+Image
+	- Single file with all the deps and config required to run a program
+Container
+	- Instance of an image. Runs a program
+
+login to docker hub
+	- "docker login"
+
+Docker Client
+	- "docker run hello-world"
+		- Docker server sees if local image cache contains the hello-world image.
+			- since it doesn't, it checks Docker Hub which is an online repo
+
+
+What's Really a Container?
+	- Image really means = File System Snapshot
+	- Container is a image of a process (e.g. ubuntu), with a kernel, and all of the running hardware needed for the container(hard drive, network, RAM, CPU)

@@ -11,3 +11,35 @@ Building Custom Images
 	Goal:
 		- Create an image that runs redis-server
 		- FROM, RUN, CMD are instructions for docker
+
+		- What's a base image?
+			- a starting point for the image we are building
+			- e.g. alpine was used as a base image because it includes preinstalled set of programs that are useful for redis server
+
+		-" docker build " takes a Dockerfile and turns it into an image
+
+		RUN vs CMD
+			- RUN is an image build step, the state of the container after a RUN command will be committed to the container image. A Dockerfile can have many RUN steps that layer on top of one another to build the image. CMD is the command the container executes by default when you launch the built image.
+
+			-CMD is sort of like overriding a docker command
+			 	-e.g. "docker run -it <redis image> redis-server"
+			 		- 'redis-server' being the CMD
+
+
+		- Cache Rebuilds
+			- speed and performance beauty of docker
+			- docker realizes if previous images have been built before. Therefore, it uses a previous image stored in machines cache, resulting in quicker speeds
+
+
+		Tagging an image
+			- "docker build -t <image name> ."
+				- easier than use the hash of the image
+			- naming convention
+				- <docker id>/<repo/project name>:<version>
+					-e.g. bercheeky/redis:latest
+
+
+		Manual Image Generation with Docker Commit
+			- not frequently used
+			- you can turn a container back into an image
+			- Description. It can be useful to commit a container's file changes or settings into a new image. This allows you to debug a container by running an interactive shell, or to export a working dataset to another server. Generally, it is better to use Dockerfiles to manage your images in a documented and maintainable way.

@@ -1,0 +1,41 @@
+Making Real Projects with Docker
+
+Project outline
+	- tiny node js website, wrapped in a docker container
+	- and bootable on local machine
+
+	- Create Node JS web app
+	- Create Dockerfile
+	- Build image from Dockerfile
+	- Run image as container
+	- Connect to web app from a browser
+
+- Errors to keep in mind
+	- basic images, such as 'alpine' do not have much programs included with it
+	FROM node:14-alpine
+		- alpine OS with node already included
+
+
+	-No local files are included in container's hard drive, you must specify this part
+		- COPY ./<path to folder on local machine> ./<folder in container>
+		- COPY ./ ./
+
+
+
+	Container Port Mapping
+		- the container has its own set of isolated ports, that it can receive traffic from
+		- must port map from local machine to container
+			- runtime constraint
+
+			- " docker run -p 8080:8080 <image name> " ****************
+				- first port: route incoming requests to this port on local host to... 
+				- second port: ...this port inside the container
+				- these two ports do not have to match
+
+	Specifying a Working Directory
+		WORKDIR
+			- Specifies where the starting directory for the docker container is
+			- Creates the container if it does not exist
+			" WORKDIR /usr/app "
+
+	Unnecessary Rebuilds

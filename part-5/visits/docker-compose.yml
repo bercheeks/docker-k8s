@@ -1,0 +1,18 @@
+#include version number
+version: '3'
+
+# the containers that you need... Service == Type of Container
+services:
+  #Container 1
+  redis-server:
+    #what prebuilt image to use
+    image: 'redis'
+  
+  #Container 2
+  node-app:
+    restart: on-failure
+    # specify which Dockerfile to build
+    build: ./
+    ports:
+      - "8000:8081"
+

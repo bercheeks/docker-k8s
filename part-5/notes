@@ -1,0 +1,64 @@
+Docker Compose with Multiple Local Containers
+
+App Overview
+	- Create a web app that keeps track of how many visits it has.
+	- Make use of two containers:
+		- Node App + Redis(for the tracking)
+			- Redis is a in-memory data tracker
+
+		- Purpose of two containers instead of one:
+			- If you want to scale up your app, you would increase the amount of node app containers but only keep one container for the Redis server
+
+
+Intro to Docker Compose
+	- Used for connecting two containers together
+	- Used for to start up multiple containers at the same time
+
+	- Automates some of the long-winded arguments we were passing to 'docker run'
+
+Docker Compose Files
+	-encoding docker cli commands within docker-compose.yml
+		- then feed it into docker-compose cli
+
+
+	docker-compose.yml for app:
+	---------------------------------------------------------------
+	Containers:
+		-Redis Server
+			- Make it using the 'redis' image
+		-Node-App
+			- Make it using the Dockerfile in the current directory
+			- Map port 8081 to 8081
+	---------------------------------------------------------------
+
+	When you use docker compose on two or more containers, they are basically in the same network... theyre able to talk to one another
+
+
+	In the index.js file, you can just simply specify the image name for redis-server instead of an actual ip addr
+
+
+	***************
+	docker run image => docker-compose up
+
+
+	docker build . 	   |
+						=> docker-compose up --build ******* for rebuilding containers
+	docker run myimage |
+	***************
+
+
+	Stopping Docker Compose Containers
+		- literally opposite of getting it up and running
+		- " docker-compose down "
+
+
+
+Container Maintenance With Compose
+	- if you wish to restart a container if it goes down, add it to the yml file
+		- restart: <"no", always, on-failure, unless-stopped>
+			- 'always' always restarts the container if it stops
+				- good for public facing webserver
+
+Container Status with Compose
+	- " docker-compose up -d ps "
+		- must be run from the same directory

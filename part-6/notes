@@ -1,0 +1,54 @@
+Creating a Production-Grade Workflow
+
+Development -> Testing -> Deployment ... Repeat
+
+Flow Specifics
+	- Dev
+		- Create/Change features
+		- Make changes on a non-dev branch
+	-Push to github
+	-Create Pull Request to merge with master
+	-Test
+		- Code Pushed to Travis CI
+		- Test Run
+	-Merge PR with Master
+	-Prod
+		- Code pushed to Travis CI
+		- Test Run
+		- Deploy to AWS elastic Beanstalk
+
+Docker's Purpose within the Flow
+	- Makes all of the above stuff easier
+
+Project Generation
+	-" npx create-react-app frontend "
+		- to generate random React app
+
+	- node commands
+		- npm run start --- starts up dev server
+		- npm run test --- runs tests
+		- npm run build --- builds a prod version
+
+
+
+	- Creating the Dev Dockerfile
+		- Dockerfile.dev
+			- file specific for dev env
+			- run with
+				- docker build -f Dockerfile.dev .
+		- Docker Volumes
+			- Used for CI, update on local machine automatically updates docker container because the container keeps a reference of local files instead of snapshot of local files
+
+			- " docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app 78c3b50cf4e5 "
+				- '-v' for volume
+
+			- in docker-compose.yml, just add a volumes tab
+
+
+
+---------------------------------------------------------
+Docker-compose.yml commands
+	- "build:
+		  context: /app/test
+		  dockerfile: Dockerfile.dev"
+		  - specify from where to build the docker image

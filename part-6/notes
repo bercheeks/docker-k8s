@@ -45,6 +45,15 @@ Project Generation
 			- in docker-compose.yml, just add a volumes tab
 
 
+		-Create a second service for running test suite
+
+
+	Need for Nginx
+		- web server
+		- takes incoming traffic and routes it
+		- used for production grade env
+
+
 
 ---------------------------------------------------------
 Docker-compose.yml commands
@@ -52,3 +61,11 @@ Docker-compose.yml commands
 		  context: /app/test
 		  dockerfile: Dockerfile.dev"
 		  - specify from where to build the docker image
+
+
+
+---------------------------------------------------------
+Docker Commands for Multi-Containers
+
+	- " docker attach <container id> "
+		- lets you have stdin, stdout for the container

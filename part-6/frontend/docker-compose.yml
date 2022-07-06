@@ -12,3 +12,13 @@ services:
     volumes:
       - /app/node_modules #do not make a reference for the node_modules
       - .:/app # map the current directory to the container dir
+  
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    #the command that will be overridden during runtime
+    command: ["npm", "run", "test"]

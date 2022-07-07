@@ -4,3 +4,14 @@ Services Overview
 	- Github
 	- Travis CI
 	- AWS - free account
+
+
+	-Travis CI
+		- used for automation of our github repos
+		- we have to provide a travis YML file
+			- ".travis.yml"
+		 - for our project:
+		 	- tell travis we need a copy of docker running
+		 	- build our image using Dockerfile.dev
+		 	- Tell travis how to run our test suite
+		 	- tell travis how to deploy to AWS

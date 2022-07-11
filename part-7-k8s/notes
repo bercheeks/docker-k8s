@@ -1,0 +1,61 @@
+Onwards to Kubernetes
+
+What is k8s?
+	- System for running many different containers over multiple different machines
+
+Why is k8s?
+	- When you need to run many different containers with different images
+
+
+Working with Kubernetes
+	- Development vs Production:
+		- Dev: minikube
+		- Prod: EKS or GKE
+
+	minikube (local env only)
+		- used for managing the VM itself
+	kubectl (will use in the cloud as well)
+		- used for managing containers in the node
+
+
+minikube start/status
+	-"minikube start"
+		- starts service
+	-"minikube status"
+		- make sure "apiserver" is running
+
+
+Kubernetes expects all images to already be built
+	-make sure our images is hosted on docker hub
+Make one config file to create the container
+Make one config file to set up networking
+
+
+Push images to docker hub
+	- login through docker hub = " docker login "
+	- " docker push bercheeky/multi-nginx "
+
+
+k8s yaml files terminology
+	****************************************************
+	- Node = Virtual machine
+	- Pods = are the smallest unit we can deploy in k8s ****************************************************
+	- Containers dont run in k8s
+		- pods run instead... basically containers
+		- containers are inside the pod
+	- Objects******************
+		- Objects serve different purposes
+			- running a container, monitoring a container, setting up networking, etc
+
+		- Config files are used to create these 'Objects'
+		- Object types:
+			-statefulSet
+			- ReplicaController
+			- Pod
+				- used to run a container
+				- a pod runs inside a node
+					- this pod may contain a nginx container
+				- can have multiple containers within it, but they must have a very strong dependency for one another
+			- Service
+
+	- apiVersion: v1 ||| or ||| apiVersion: apps/v1

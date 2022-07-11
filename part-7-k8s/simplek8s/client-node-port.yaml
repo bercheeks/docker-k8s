@@ -1,12 +1,13 @@
 apiVersion: v1
+#sets up networking in a k8s cluster
 kind: Service
 metadata:
   name: client-node-port
 spec:
   type: NodePort
   ports:
-    - ports: 3050
-      targetPort: 3000
-      nodePort: 31515
+    - port: 3050 # for other containers to communicate with this one
+      targetPort: 3000 #container port
+      nodePort: 31515 # one for connecting to from outside. e.g. browser port
   selector:
-    component: web
+    component: web #determines where to map pod

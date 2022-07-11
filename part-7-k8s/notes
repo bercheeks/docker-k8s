@@ -39,7 +39,8 @@ Push images to docker hub
 k8s yaml files terminology
 	****************************************************
 	- Node = Virtual machine
-	- Pods = are the smallest unit we can deploy in k8s ****************************************************
+	- Pods = are the smallest unit we can deploy in k8s 
+	****************************************************
 	- Containers dont run in k8s
 		- pods run instead... basically containers
 		- containers are inside the pod
@@ -57,5 +58,35 @@ k8s yaml files terminology
 					- this pod may contain a nginx container
 				- can have multiple containers within it, but they must have a very strong dependency for one another
 			- Service
+				- sets up networking in a k8s cluster
+				-Subtypes:
+					ClusterIP
+					NodePort -> exposes port to the outside
+						- only for dev purposes
+					Load Balancer
+					Ingress
+
 
 	- apiVersion: v1 ||| or ||| apiVersion: apps/v1
+
+
+	Connecting to running Containers
+		- " kubectl apply -f <filename> "
+			- apply = change current config of our cluster
+			- -f specifies the config file
+	see status of pods
+		- " kubectl get pods "
+	see services
+		- " kubectl get services "
+
+	Once you start a pod, it will be localhost. IP address will be assigned by Minikube
+		-" minikube ip " gets the ip address
+
+	*************
+	Make sure "kind type is capitalized" pod = Pod
+	*************
+
+As devs, we work with the master node(api server) when interacting with kubernetes
+
+To deploy something, we update the desired state of the master with a config file
+The master works to meet your desired state

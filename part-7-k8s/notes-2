@@ -1,0 +1,22 @@
+Maintaining Sets of Containers With Deployments
+
+Updating a Container with k8s
+	- just update the yaml config file:
+		- " kubectl apply -f <file> "
+
+Get Detailed info about an object:
+	- " kubectl describe <object type> <object name> "
+	OR
+	- " kubectl describe <object type> "
+		- omits the name one
+
+		kubectl describe pod client-pod
+
+Running Containers with Deployments
+	- with type pod: you can update image fields but not stuff like containers, name, or port.
+	- use type/kind Deployment object
+	-Deployment:
+		- maintains a set of identical pods, ensuring that they have the correct config and that the right number exists
+	Deployment > Pods
+		- pods run single set of containers vs Deployment runs a set of identical pods (one or more)
+		- Deployment is good for production

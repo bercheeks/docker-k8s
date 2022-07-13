@@ -20,3 +20,38 @@ Running Containers with Deployments
 	Deployment > Pods
 		- pods run single set of containers vs Deployment runs a set of identical pods (one or more)
 		- Deployment is good for production
+
+Remove a pod
+	- " kubectl delete -f <config file> "
+
+See Deployments:
+	-" kubectl get deployments "
+
+See full pod info
+	- " kubectl get pod -o wide "
+		- shows ip of every individual pod
+
+Purpose of Service Object Type:
+	- Deployment type will make its own IP addresses for the pods being created. therefore we need an intersection between kube-proxy and the pod itself
+
+Updating Pods as soon as Image file is updated:
+	- make sure updated image got pushed to docker hub
+	- get the deployment to recreate our pods with the latest version of our image
+	-3 solutions
+		- Manually delete pods to get deployment to recreate the new one
+			- not recommended
+		- Tag built images with a real version number and specify it in the config file
+			- adds an extra step in the deployment process
+		-Use an imperative command to update the image version the deployment should use
+			- still have to tag our updated images
+
+			*********************************
+			kubectl set image <object_type>/<object_name> <container_name> = <new image to use>
+			*********************************
+
+
+
+Multiple Docker Installations
+	
+	- View minikube's running containers
+	- " eval $(minikube docker-env) "

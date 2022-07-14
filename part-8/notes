@@ -1,0 +1,20 @@
+Multi Container App with K8s
+
+One seperate config files for all Objects within the node
+	- 1 ingress service
+	- 4 ClusterIP Services
+		- Multi-Client pod * 3
+		- Multi-Server pod * 3
+		- multi-worker pod
+		- Redis pod
+		- Postgres pod
+
+ClusterIP vs NodePort Services
+	- ClusterIP: exposes a set of pods to other objects in the cluster
+		- doesnt allow traffic to come in from the outside world*********************************************
+		- need to make use of Ingress Service
+	- NodePort: Exposes a set of pods to the outside world (only good for dev purpose)
+
+Combining Config Into Single Files
+	- can combine different sets of config into a sinlge file
+	- just make sure to include three dashes "---" in between objects

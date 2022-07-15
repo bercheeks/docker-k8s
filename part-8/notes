@@ -18,3 +18,11 @@ ClusterIP vs NodePort Services
 Combining Config Into Single Files
 	- can combine different sets of config into a sinlge file
 	- just make sure to include three dashes "---" in between objects
+
+
+Persistent Volume Claim (PVC)
+	- link the hard drive of the host machine with the container drive
+
+	- why do we need PVC
+		- its saves data
+		- if pod crashes, for instance, a postgres DB pod crashes... the data within the db will be lost. Therefore, we need to save that data onto the host machine's drive

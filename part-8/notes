@@ -26,3 +26,38 @@ Persistent Volume Claim (PVC)
 	- why do we need PVC
 		- its saves data
 		- if pod crashes, for instance, a postgres DB pod crashes... the data within the db will be lost. Therefore, we need to save that data onto the host machine's drive
+		- The data should be saved to the "volume" on host machine
+
+Kubernetes Volumes
+	- **** An OBJECT that allows a container to store data at the pod level
+		- it is not exactly the same as a Docker volume
+	- there are also Persistent Volume Claim + Persistent Volume
+
+
+Volumes vs Persistent Volumes
+	- Volume would be long term storage within pod. If container crashes the volume still exists. BUT if pod crashes, everything inside the volume goes away
+	- Persistent Volume is a long term storage outside of the pod. If pod crashes, the volume still exists
+
+Persistent Volumes vs Persistent Volume Claims
+	- persistent volume (PV) is the "physical" volume on the host machine that stores your persistent data. A persistent volume claim (PVC) is a request for the platform to create a PV for you, and you attach PVs to your pods via a PVC.
+
+
+PersistentVolumeClaim Object
+	- "accessModes" has three modes
+		- ReadWriteOnce
+			- Can be used by a single node
+		-ReadOnlyMany
+			- multiple nodes can read from this
+		-ReadWriteMany
+			- Can be read and written to by many nodes
+
+Where does k8s Allocate Persistent Volumes?
+	- k8s will make storage from your local machine
+	- "kubectl get storageclass"
+	- " kubectl describe storageclass "
+	- things change when you take the app to the cloud
+
+Designating a PVC in a pod template
+	- once you make your PVC config:
+		- add a "volumes" type to the spec of the deployment template
+		- map the pvc to the container 

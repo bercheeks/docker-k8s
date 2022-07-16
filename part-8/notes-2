@@ -1,0 +1,44 @@
+Handling Traffic with Ingress Controllers
+
+Load Balancing Service Object
+	- Legacy way of getting network traffic into a cluster
+	- Ingress service --> newer and better
+
+	- Doesnt allow multiple connections to the outside, only allows connections to one set of pods
+
+	- Will be using ingress service
+
+Ingresses
+	- Exposes a set of services to the outside world
+	- Will be using Nginx Ingress
+
+	*********************************************************
+	- We are using "ingress-nginx" the community led project
+		- not using "kubernetes-ingress", a project led by the company nginx
+	*********************************************************
+	- Note:
+		- setup of ingress-nginx changes depending on your env (local, GC, AWS, Azure)
+
+
+	- We must create the config file, so it can make an ingress controller that accepts incoming traffic
+
+	- On the Cloud:
+		- create config
+			- deployment has nginx pod
+			- Google cloud creates a GC load balancer
+				- also creates a LoadBalancer Service within the node
+https://www.joyfulbikeshedding.com/blog/2018-03-26-studying-the-kubernetes-ingress-system.html
+
+
+Enable Minikube Ingress Service
+	- " minikube addons enable ingress "
+
+
+To see if ingress worked locally:
+	- Go to minikube's ip address to see if things got mapped
+	-NOT HTTPS********
+	- ingress-nginx does not set up HTTPS on its own
+
+Minikube Dashboard
+	- " minikube dashboard "
+	- shows info all about our minikube dashboard
